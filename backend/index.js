@@ -12,6 +12,6 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/Images", express.static("uploads"));
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(process.env.BACKEND_PORT, () => {
+  console.log(`Server is running on port ${process.env.BACKEND_PORT}`);
 });
