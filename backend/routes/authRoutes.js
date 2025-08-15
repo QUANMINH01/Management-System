@@ -71,7 +71,7 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Incorrect password" });
     }
 
-    const token = jwt.sign({ id: rows[0].id }, process.env.JWT_KEY, {
+    const token = jwt.sign({ id: rows[0].id }, process.env.BACKEND_JWT_KEY, {
       expiresIn: "1h",
     });
 
@@ -96,7 +96,7 @@ const verifyToken = (req, res, next) => {
     return res.status(403).json({ message: "No token provided" });
   }
 
-  jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
+  jwt.verify(token, process.env.BACKEND_JWT_KEY, (err, decoded) => {
     if (err) {
       console.error("Token verification failed:", err);
       return res.status(401).json({ message: "Unauthorized" });
